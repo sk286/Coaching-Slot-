@@ -1,6 +1,6 @@
 #Gesamtnetzwerk mit Jahr 
 library(igraph)
-el <- read.csv("edge-be.csv", header=TRUE)
+el <- read.csv("https://raw.githubusercontent.com/im041/Coaching-Slot-/master/edge-be.csv", header=TRUE)
 is.data.frame(el)
 el
 #Funktion graph.data.frame
