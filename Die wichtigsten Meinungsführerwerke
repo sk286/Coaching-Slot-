@@ -1,0 +1,40 @@
+library(visNetwork)
+visIgraph(me2)
+
+####
+#Netzwerk der MeinungsfÃ¼hrer mit Jahr=Werkenetzwerk
+
+library(igraph)
+el <- read.csv("edge-creme.csv", header=TRUE)
+is.data.frame(el)
+
+me <- graph.data.frame(el, directed=TRUE)
+me
+plot(me, vertex.label=NA, vertex.size=1)
+
+# Alle Knoten mit indegree=1 lÃ¶schen
+
+#KnotengrÃ¶Ãe nach Indegrees
+inh <- degree(me, mode = "in")
+inh
+
+# alle Indegrees mit 1 lÃ¶schen
+me2 <- delete.vertices(me, V(me)[inh =="1"])
+me3 <-delete_vertices(me2, V(me2)[ind == "0"])
+me3
+
+plot(me3, vertex.size=degree(me3), main="MeinungsfÃ¼hrer PR Grundlagenliteratur", vertex.label.cex=.7)
+
+# Angepasste Darstellung
+
+E(me2)$arrow.size <- .05 # definiert die Pfeilspitze auf 2
+E(me2)$color="black"
+
+E(me2)$curved=.2
+# gibt die GrÃ¶Ãe des Labels an
+vertex.label.cex=.4
+#betweeness
+betweenness(me3)
+#Plot der wichtigsten Werke der Grundlagenliteratur
+plot(me3, vertex.size=degree(me2), layout = layout_with_fr, main="MeinungsfÃ¼hrer PR Grundlagenliteratur", vertex.label.cex=.7)
+
