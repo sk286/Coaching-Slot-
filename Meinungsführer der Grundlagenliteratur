@@ -6,7 +6,7 @@ library(igraph)
 # edgelist einlesen
 # edgelist muss in der working directory liegen bzw. mÃ¼ssen Sie entsprechend ihrer edgelist umbenennen
 # ich habe den Datensatz auf mein Github geschoben
-pr <- read.csv("https://raw.githubusercontent.com/hdm-crpr/226305/master/ss18_block/students/pr/el_pr_oj.csv", header=T, as.is=T, sep = ",")
+pr <- read.csv("https://raw.githubusercontent.com/im041/Coaching-Slot-/master/edge-oj.csv", header=T, as.is=T, sep = ",")
 
 # edgelist prÃ¼fen
 pr
