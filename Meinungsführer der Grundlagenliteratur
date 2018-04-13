@@ -43,6 +43,7 @@ pr6 <- delete_vertices(pr5, V(pr5)[ind == "6"])
 pr7 <- delete_vertices(pr6, V(pr6)[ind == "7"])
 pr8 <-delete_vertices(pr7, V(pr7)[ind == "0"])
 plot(pr8)
+
 vertex_attr(pr8)
 pr1
 #mehrfache Edges werden aufadiert/vereinfacht, kann dann noch nach KantenstÃ¤rke verdickt werden
@@ -50,11 +51,9 @@ prf<-simplify(pr8, edge.attr.comb = list(weight="sum"))
 plot(prf, vertex.size=degree(prf)*3)
 prf
 
-
 # Teilnetzwerk prÃ¼fen
 pr_plus2
 vertex_attr(pr_plus2)
-
 
 # zeigt, dass alle indegree-Werte mit 1 gelÃ¶scht wurden, auch die hohen Werte von gestern sind mit dabei.
 V(pr_plus1)$ind
@@ -64,6 +63,9 @@ plot(pr_plus1, vertex.size=degree(pr_plus1, mode="in"), edge.arrow.size=0.05, ve
 
 #anders benennen
 pr_plus2<- delete_vertices(pr, V(pr)[ind == "2"])
+
+# Ohne Labels
+plot(pr_plus1, vertex.size=degree(pr_plus1, mode="in"), edge.arrow.size=0.05, layout = layout_with_fr, main="Zitationsnetzwerk PR-EinfÃ¼hrungsliteratut", sub = "Visualisierung nach Indegree-Verteilung, indegree > 1")
 
 ##Egonetzwerke, um Zitationen deutlicher zu machen
 ###Egonetzwerk Bentele 
@@ -85,15 +87,6 @@ plot(egobruhn[[1]], edge.arrow.size=.1)
 ###Egonetzwerk Luhmann###
 egoluhmann <- subgraph <- make_ego_graph(pr, order=1, c("Luhmann"))
 plot(egoluhmann[[1]], edge.arrow.size=.1)
-
-# Ohne Labels
-plot(pr_plus1, vertex.size=degree(pr_plus1, mode="in"), edge.arrow.size=0.05, layout = layout_with_fr, main="Zitationsnetzwerk PR-EinfÃ¼hrungsliteratut", sub = "Visualisierung nach Indegree-Verteilung, indegree > 1")
-
-# Ich bin mir nur nicht sicher, ob wir nicht auch die Basisliteratur lÃ¶schen, weil diese ja ggf. einen indegree von = 1 haben kÃ¶nnte (im Fall, dass das Buch nie von einem anderen zitiert wurde). Oder sehe ich das falsch? Das mÃ¼ssten Sie nochmals prÃ¼fen...
-
-# Sie kÃ¶nnen folgendes tun:
-# a) im Skript die Anzahl der indegrees variieren und schauen, was passiert
-# b) Teilnetzwerke fÃ¼r die einzelnen Autoren erstellen und miteinander vergleichen
 
 #Egonetzwerk Bentele
 ego_bentele <- make_ego_graph(pr, order = 1, nodes = V(pr)$name == Hoffjann, mode ="in")
