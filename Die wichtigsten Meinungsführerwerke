@@ -5,7 +5,7 @@ visIgraph(me2)
 #Netzwerk der MeinungsfÃ¼hrer mit Jahr=Werkenetzwerk
 
 library(igraph)
-el <- read.csv("edge-creme.csv", header=TRUE)
+el <- read.csv("https://raw.githubusercontent.com/im041/Coaching-Slot-/master/edge-creme.csv", header=TRUE)
 is.data.frame(el)
 
 me <- graph.data.frame(el, directed=TRUE)
