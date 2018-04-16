@@ -86,6 +86,7 @@ pr_plus2<- delete_vertices(pr, V(pr)[ind == "2"])
 plot(pr_plus1, vertex.size=degree(pr_plus1, mode="in"), edge.arrow.size=0.05, layout = layout_with_fr, main="Zitationsnetzwerk PR-EinfÃ¼hrungsliteratut", sub = "Visualisierung nach Indegree-Verteilung, indegree > 1")
 
 ##Egonetzwerke, um Zitationen deutlicher zu machen
+
 ###Egonetzwerk Bentele 
 egobentele <- subgraph <- make_ego_graph(pr, order=1, c("Bentele"))
 plot(egobentele[[1]], edge.arrow.size=.1)
@@ -106,6 +107,10 @@ plot(egobruhn[[1]], edge.arrow.size=.1)
 egoluhmann <- subgraph <- make_ego_graph(pr, order=1, c("Luhmann"))
 plot(egoluhmann[[1]], edge.arrow.size=.1)
 
-#Egonetzwerk Bentele
-ego_bentele <- make_ego_graph(pr, order = 1, nodes = V(pr)$name == Hoffjann, mode ="in")
-plot(ego_bentele[[1]], main="Ego-Netzwerk Bentele")
+###Egonetzwerk Merten###
+egomerten <- subgraph <- make_ego_graph(pr, order=1, c("Merten"))
+plot(egomerten[[1]], edge.arrow.size=.1)
+
+###Egonetzwerk RoettgerU###
+egoroettgeru <- subgraph <- make_ego_graph(pr, order=1, c("RoettgerU"))
+plot(egoroettgeru[[1]], edge.arrow.size=.1)
